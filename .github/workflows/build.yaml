@@ -33,8 +33,13 @@ jobs:
       - name: Commit
         run: |-
           git add .
-          git diff
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
           git config --global user.email "github-actions-bot@alfaarizi.github.io"
           git config --global user.name "alfaarizi/GitHub-Actions-Bot"
-          git commit -m "Updated README" -a || echo "No changes to commit"
-          git push
+          git commit -m "Updated README"
+          git fetch origin main
+          git rebase origin/main
+          git push origin main
