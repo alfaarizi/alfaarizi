@@ -39,7 +39,7 @@ jobs:
           fi
           git config --global user.email "github-actions-bot@alfaarizi.github.io"
           git config --global user.name "alfaarizi/GitHub-Actions-Bot"
-          git commit -m "Updated README"
+          git commit -m "chore: update README"
           git fetch origin main
           git rebase origin/main
           git push origin main
